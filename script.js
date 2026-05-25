@@ -64,7 +64,7 @@ const translations = {
     faq6_q: "What payment methods do you accept?", faq6_a: "Visa, MasterCard, Discover, American Express, JCB, and PayPal.",
     faq7_q: "What is your money back policy?", faq7_a: "Payment is required at the time of booking to secure your lesson slot. A full refund is provided for cancellations made at least 24 hours before the scheduled lesson. No refund for cancellations with less than 24 hours notice or completed lessons.",
     faq8_q: "What if I am running late?", faq8_a: "The lesson will be started and finished at the scheduled time.",
-    footer_desc: "Online English Lessons via Zoom. Teaching in English, Ukrainian, and Russian.",
+    footer_desc: "Online English Lessons via Zoom. Teaching in English, Russian, and Ukrainian.",
     footer_links: "Quick Links", footer_book: "Book a Lesson",
     footer_connect: "Connect with Me", footer_message: "Send a Message",
     form_name: "Your name", form_email: "Your email", form_msg: "Your message",
