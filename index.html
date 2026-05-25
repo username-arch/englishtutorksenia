@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning English Online - English Tutor Ksenia</title>
+  <meta name="description" content="Learning English Online is based on each individual student's goals and needs. You can choose the most suitable course. 50% off first lesson." />
+  <link rel="canonical" href="https://www.englishtutorksenia.com/" />
+  <link rel="icon" type="image/png" href="images/android-chrome-512x512-1.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <header id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="logo">
+        <img src="images/Logo-1.png" alt="English Tutor Ksenia" class="logo-img" />
+      </a>
+      <nav id="desktopNav">
+        <a href="#about"        data-i18n="nav_about">About</a>
+        <a href="#video"        data-i18n="nav_video">Video</a>
+        <a href="#courses"      data-i18n="nav_courses">Courses</a>
+        <a href="#stats"        data-i18n="nav_results">Results</a>
+        <a href="#testimonials" data-i18n="nav_reviews">Reviews</a>
+        <a href="#faq"          data-i18n="nav_faq">FAQ</a>
+        <a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact</a>
+      </nav>
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn"        data-lang="ru" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn"        data-lang="ua" onclick="setLang('ua')">UA</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about"        onclick="closeMobile()" data-i18n="nav_about">About</a>
+      <a href="#video"        onclick="closeMobile()" data-i18n="nav_video">Video</a>
+      <a href="#courses"      onclick="closeMobile()" data-i18n="nav_courses">Courses</a>
+      <a href="#stats"        onclick="closeMobile()" data-i18n="nav_results">Results</a>
+      <a href="#testimonials" onclick="closeMobile()" data-i18n="nav_reviews">Reviews</a>
+      <a href="#faq"          onclick="closeMobile()" data-i18n="nav_faq">FAQ</a>
+      <a href="#contact"      onclick="closeMobile()" data-i18n="nav_contact">Contact</a>
+      <div class="lang-switcher mobile-lang">
+        <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn"        data-lang="ru" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn"        data-lang="ua" onclick="setLang('ua')">UA</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="hero-bg-img" style="background-image: url('images/background.png');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content fade-in">
+      <div class="hero-badge" data-i18n="hero_badge">🎓 Online English Lessons via Zoom</div>
+      <h1>
+        <span data-i18n="hero_h1_1">Learning English Online</span><br />
+        <span class="gradient-text" data-i18n="hero_h1_2">With a Personal Tutor</span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero_sub">Lessons tailored to <em>your</em> goals, pace, and schedule.<br />Choose the course that fits you best.</p>
+      <div class="hero-offer">
+        <span class="badge-discount">50% OFF</span>
+        <span data-i18n="hero_offer">your first trial lesson</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#booking" class="btn-primary" data-i18n="btn_book">Book a Lesson</a>
+        <a href="#video"   class="btn-secondary" data-i18n="btn_watch">▶ Watch Video</a>
+      </div>
+
+    </div>
+    <div class="hero-photo fade-in delay-2">
+      <img src="images/Face.png" alt="Ksenia - English Tutor" class="hero-face" />
+    </div>
+  </section>
+
+  <!-- ========== VIDEO ========== -->
+  <section class="video-section section" id="video">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label" data-i18n="video_label">Watch & Learn</div>
+        <h2 data-i18n="video_title">See How Lessons Work</h2>
+        <p data-i18n="video_sub">Get a feel for my teaching style before you book your first lesson</p>
+      </div>
+      <div class="video-wrap fade-in">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/nHF9IiNngSA"
+            title="English Tutor Ksenia - Lesson Preview"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image fade-in">
+          <div class="about-img-wrap">
+            <img src="images/Face.png" alt="Ksenia - English Tutor" class="about-face-img" />
+            <div class="about-badge-float">
+              <span>3+</span> <span data-i18n="about_badge">years experience</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-text fade-in delay-1">
+          <div class="section-label" data-i18n="about_label">About Ksenia</div>
+          <h2 data-i18n="about_title">Your English Tutor</h2>
+          <p data-i18n="about_p1">I am Ksenia, a professional English tutor teaching online via Zoom. I speak English, Ukrainian, and Russian — so you can study in the language you're most comfortable with.</p>
+          <p data-i18n="about_p2">My method is built around <strong>your individual goals</strong>: whether you want to pass an exam, speak fluently in business meetings, or simply enjoy American movies without subtitles.</p>
+          <ul class="about-list">
+            <li data-i18n="about_li1">✅ Lessons in English, Ukrainian, or Russian</li>
+            <li data-i18n="about_li2">✅ Flexible schedule — you pick the time</li>
+            <li data-i18n="about_li3">✅ 100% unique author's teaching technique</li>
+            <li data-i18n="about_li4">✅ Proven results with 700+ students</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COURSES ========== -->
+  <section class="courses section" id="courses">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label" data-i18n="courses_label">What I Offer</div>
+        <h2 data-i18n="courses_title">Popular Courses</h2>
+        <p data-i18n="courses_sub">Every course is tailored to your level and learning objectives</p>
+      </div>
+      <div class="courses-grid">
+        <div class="course-card fade-in">
+          <div class="course-img-wrap">
+            <img src="images/First-lesson.png" alt="First Lesson (Trial)" loading="lazy" />
+          </div>
+          <div class="course-body">
+            <h3 data-i18n="course1_title">First Lesson (Trial)</h3>
+            <p data-i18n="course1_desc">A 45-minute trial session to discuss your learning goals, determine your current English level, and create a personalized study plan.</p>
+            <div class="course-footer">
+              <div class="course-tag" data-i18n="course1_tag">45 minutes • $10.00</div>
+              <button class="btn-course-book" data-cal-link="englishtutorksenia/45min" data-cal-namespace="45min" data-cal-config='{"layout":"month_view"}' data-i18n="btn_book_now">Book Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="course-card fade-in delay-1">
+          <div class="course-img-wrap">
+            <img src="images/Conversation-practice.png" alt="Conversation Practice" loading="lazy" />
+          </div>
+          <div class="course-body">
+            <h3 data-i18n="course2_title">Conversation Practice</h3>
+            <p data-i18n="course2_desc">Focus exclusively on speaking skills. Improve fluency, learn real-world idioms, expand active vocabulary, and build confidence talking about diverse topics.</p>
+            <div class="course-footer">
+              <div class="course-tag" data-i18n="course2_tag">1 hour • $29.00</div>
+              <button class="btn-course-book" data-cal-link="englishtutorksenia/1hrlesson" data-cal-namespace="1hrlesson" data-cal-config='{"layout":"month_view"}' data-i18n="btn_book_now">Book Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="course-card fade-in delay-2">
+          <div class="course-img-wrap">
+            <img src="images/Formal-tutoring.png" alt="Formal Tutoring" loading="lazy" />
+          </div>
+          <div class="course-body">
+            <h3 data-i18n="course3_title">Formal Tutoring</h3>
+            <p data-i18n="course3_desc">A comprehensive, structured lesson covering all language aspects: speaking, grammar, listening, reading, and writing, tailored to your professional or personal needs.</p>
+            <div class="course-footer">
+              <div class="course-tag" data-i18n="course3_tag">1 hour • $29.00</div>
+              <button class="btn-course-book" data-cal-link="englishtutorksenia/1hrlesson" data-cal-namespace="1hrlesson" data-cal-config='{"layout":"month_view"}' data-i18n="btn_book_now">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="courses-cta fade-in">
+        <a href="#booking" class="btn-primary" data-i18n="courses_cta">Book Your First Lesson - 50% Off</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS ========== -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <div class="stat-number" data-target="700">0</div>
+          <div class="stat-plus">+</div>
+          <div class="stat-label" data-i18n="stat1">Students have successfully completed the course</div>
+        </div>
+        <div class="stat-item fade-in delay-1">
+          <div class="stat-number" data-target="3">0</div>
+          <div class="stat-plus">+</div>
+          <div class="stat-label" data-i18n="stat2">Years of successful teaching</div>
+        </div>
+        <div class="stat-item fade-in delay-2">
+          <div class="stat-number static-stat">24/7</div>
+          <div class="stat-label" data-i18n="stat3">Adaptive class schedule</div>
+        </div>
+        <div class="stat-item fade-in delay-3">
+          <div class="stat-number" data-target="100">0</div>
+          <div class="stat-plus">%</div>
+          <div class="stat-label" data-i18n="stat4">Unique author's teaching technique</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BOOKING ========== -->
+  <section class="booking section" id="booking">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label" data-i18n="booking_label">Get Started</div>
+        <h2 data-i18n="booking_title">Book Your First Lesson</h2>
+        <p data-i18n="booking_sub">Your first lesson is <strong>50% off</strong>. Pick a time that works for you.</p>
+        <p class="booking-policy-note" data-i18n="booking_policy">💳 Payment is required at booking to secure your slot. Full refund if cancelled at least 24 hours in advance.</p>
+      </div>
+      <div class="booking-box fade-in">
+        <div class="booking-info">
+          <div class="booking-step">
+            <div class="step-num">1</div>
+            <div>
+              <strong data-i18n="step1_title">Choose your course</strong>
+              <p data-i18n="step1_desc">Tell me your level and goal</p>
+            </div>
+          </div>
+          <div class="booking-step">
+            <div class="step-num">2</div>
+            <div>
+              <strong data-i18n="step2_title">Pick a date &amp; time</strong>
+              <p data-i18n="step2_desc">Any time zone works</p>
+            </div>
+          </div>
+          <div class="booking-step">
+            <div class="step-num">3</div>
+            <div>
+              <strong data-i18n="step3_title">Join via Zoom</strong>
+              <p data-i18n="step3_desc">No downloads needed</p>
+            </div>
+          </div>
+          <div class="booking-policy">
+            <p data-i18n="booking_policy_box">💳 <strong>Payment secures your lesson.</strong> Full refund with 24h+ cancellation notice.</p>
+          </div>
+
+        </div>
+        <div class="booking-form-wrap">
+          <!-- Real Cal.com inline calendar embed -->
+          <div id="cal-inline-booking" style="width:100%;height:650px;overflow:scroll;border-radius:12px;"></div>
+          <p class="booking-note" style="text-align:center;margin-top:8px;" data-i18n="booking_note">* Secure booking via Cal.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label" data-i18n="testimonials_label">Student Reviews</div>
+        <h2 data-i18n="testimonials_title">Testimonials</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-avatar-img">
+            <img src="images/Layer-4.png" alt="Marina" loading="lazy" />
+          </div>
+          <div class="testimonial-body">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text" data-i18n="review1_text">"Who is on duty today? Напевно це речення ми запам'ятали з уроків англійської мови назавжди. А от як почати спілкуватися з носіями мови? Як зрозуміти англійсько американські ідіоми яких так багато вживають у кінофільмах? У цьому мені допомогло спілкування онлайн з вчителем мови Ксенією. Я займаюсь в зручний для мене час у доброзичливій атмосфері і дізнаюсь багато нового про американські етикет, культуру та менталітет. Спробуйте і переконаєтесь самі."</p>
+            <div class="testimonial-author">— Марина</div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in delay-1">
+          <div class="testimonial-avatar-img">
+            <img src="images/Olgas-feedback.png" alt="Olga" loading="lazy" />
+          </div>
+          <div class="testimonial-body">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text" data-i18n="review2_text">"Отличный репетитор! Пунктуальная, доброжелательная, умеет доходчиво объяснять материал. Я прошла 10 занятий, увидела значительный прогресс, обязательно продолжу уроки. Спасибо за хорошую работу!!"</p>
+            <div class="testimonial-author">— Ольга</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label" data-i18n="faq_label">Questions &amp; Answers</div>
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list fade-in">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq1_q">Why is your first lesson paid and not free?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p data-i18n="faq1_a">I value your time. A small nominal fee helps to ensure the student is dedicated to learn.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq2_q">How often should I take classes with you?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p data-i18n="faq2_a">You can have classes as often as every day or every other day, and as minimum as one (1) time per week. Remember, 99% of the success of learning a language is being consistent and practicing every day. I recommend spending two (2) hours of self-study per each hour working with a teacher.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq3_q">When will I see my first results?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p data-i18n="faq3_a">Results depend on consistency. Students who practice daily typically notice improvements within 2–4 weeks. Consistency is the key — 99% of language learning success comes from regular practice.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq4_q">What languages do you speak?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p data-i18n="faq4_a">I speak English, Ukrainian, and Russian fluently. Lessons can be conducted in the language you are most comfortable with.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq5_q">What is your cancelling and rescheduling policy?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p data-i18n="faq5_a">Please give at least 24 hours notice to cancel or reschedule a lesson. Late cancellations may result in the lesson being charged.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq6_q">What payment methods do you accept?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p data-i18n="faq6_a">Visa, MasterCard, Discover, American Express, JCB, and PayPal.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq7_q">What is your money back policy?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p data-i18n="faq7_a">You can request money back at any time for uncompleted lessons. There is no money back for completed lessons.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-i18n="faq8_q">What if I am running late?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><p data-i18n="faq8_a">The lesson will be started and finished at the scheduled time.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="contact">
+    <div class="footer-bg" style="background-image: url('images/Footer-bg.png');"></div>
+    <div class="footer-overlay"></div>
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="images/Logo-1.png" alt="English Tutor Ksenia" class="footer-logo-img" />
+            <p data-i18n="footer_desc">Online English Lessons via Zoom. Teaching in English, Ukrainian, and Russian.</p>
+
+          </div>
+          <div class="footer-links">
+            <h4 data-i18n="footer_links">Quick Links</h4>
+            <a href="#about"        data-i18n="nav_about">About</a>
+            <a href="#courses"      data-i18n="nav_courses">Courses</a>
+            <a href="#booking"      data-i18n="footer_book">Book a Lesson</a>
+            <a href="#testimonials" data-i18n="nav_reviews">Reviews</a>
+            <a href="#faq"          data-i18n="nav_faq">FAQ</a>
+          </div>
+          <div class="footer-social">
+            <h4 data-i18n="footer_connect">Connect with Me</h4>
+            <div class="social-links">
+              <a href="https://www.facebook.com/englishtutorksenia" target="_blank" class="social-link">
+                <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                <span>Facebook</span>
+              </a>
+              <a href="https://telegram.im/@englishtutorksenia" target="_blank" class="social-link">
+                <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21.93 3.24L2.17 10.96c-1.3.52-1.29 1.25-.24 1.57l4.98 1.55 11.53-7.28c.54-.33 1.04-.15.63.21L8.43 16.53l-.35 5.16c.51 0 .74-.23 1.02-.5l2.45-2.38 5.09 3.76c.94.52 1.61.25 1.84-.87l3.33-15.7c.34-1.36-.52-1.98-1.83-1.46z"/></svg>
+                <span>Telegram</span>
+              </a>
+              <a href="https://www.youtube.com/englishtutorksenia" target="_blank" class="social-link">
+                <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+                <span>YouTube</span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2024 English Tutor Ksenia. All rights reserved.</p>
+        <p>englishtutorksenia.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  
+  <!-- Cal embed code -->
+  <script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    /* ---- 45-minute trial lesson (popup for course card buttons) ---- */
+    Cal("init", "45min", {origin:"https://app.cal.com"});
+    Cal.ns["45min"]("ui", {
+      "styles": {"branding": {"brandColor": "#1a6fc4"}},
+      "hideEventTypeDetails": false,
+      "layout": "month_view"
+    });
+
+    /* ---- 1-hour lesson (popup for course card buttons) ---- */
+    Cal("init", "1hrlesson", {origin:"https://app.cal.com"});
+    Cal.ns["1hrlesson"]("ui", {
+      "styles": {"branding": {"brandColor": "#1a6fc4"}},
+      "hideEventTypeDetails": false,
+      "layout": "month_view"
+    });
+
+    /* ---- Inline calendar in the booking section ---- */
+    Cal("init", "inline-45min", {origin:"https://app.cal.com"});
+    Cal.ns["inline-45min"]("inline", {
+      elementOrSelector: "#cal-inline-booking",
+      calLink: "englishtutorksenia/45min",
+      layout: "month_view"
+    });
+    Cal.ns["inline-45min"]("ui", {
+      "styles": {"branding": {"brandColor": "#1a6fc4"}},
+      "hideEventTypeDetails": false,
+      "layout": "month_view"
+    });
+  </script>
+</body>
+</html>
