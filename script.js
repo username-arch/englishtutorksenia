@@ -203,7 +203,9 @@ const translations = {
 // =============================================
 //  LANGUAGE SWITCHER
 // =============================================
-let currentLang = localStorage.getItem('lang') || 'en';
+const urlParams = new URLSearchParams(window.location.search);
+const urlLang = urlParams.get('lang');
+let currentLang = ['en', 'ru', 'ua'].includes(urlLang) ? urlLang : (localStorage.getItem('lang') || 'en');
 
 function setLang(lang) {
   currentLang = lang;
