@@ -621,13 +621,6 @@ nav .nav-cta:hover { background: var(--blue2); }
 }
 .booking-phone:hover { color: var(--white); }
 
-.booking-form-wrap {
-  padding: 48px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .booking-widget {
   width: 100%;
   max-width: 400px;
@@ -980,6 +973,21 @@ nav .nav-cta:hover { background: var(--blue2); }
 .delay-1 { transition-delay: 0.12s; }
 .delay-2 { transition-delay: 0.24s; }
 .delay-3 { transition-delay: 0.36s; }
+.booking-form-wrap {
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cal-embed-container {
+  width: 100%;
+  min-height: 650px;
+  overflow: auto;
+  border-radius: 12px;
+  -webkit-overflow-scrolling: touch;
+}
 
 /* ---- RESPONSIVE ---- */
 @media (max-width: 900px) {
@@ -993,6 +1001,8 @@ nav .nav-cta:hover { background: var(--blue2); }
   .courses-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .booking-box { grid-template-columns: 1fr; }
+  .booking-form-wrap { padding: 24px 16px; }
+  .cal-embed-container { min-height: 580px; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -1007,4 +1017,7 @@ nav .nav-cta:hover { background: var(--blue2); }
   .hero h1 { font-size: 2rem; }
   .hero-actions { flex-direction: column; align-items: center; }
   .video-wrap { padding: 0 8px; }
+  .booking-form-wrap { padding: 16px 8px; }
+  .booking-info { padding: 32px 24px; }
+  .cal-embed-container { min-height: 520px; border-radius: 8px; }
 }
