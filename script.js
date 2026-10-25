@@ -1,367 +1,314 @@
-/* =============================================
-   ENGLISH TUTOR KSENIA — script.js (v2)
-   ============================================= */
+/* ========================================================
+   English Tutor Ksenia — Scripts & Translations
+   ======================================================== */
 
-// =============================================
-//  TRANSLATIONS
-// =============================================
+// --- 1. Cal.com Inline Booking Embed ---
+(function (C, A, L) {
+  let p = function (a, ar) { a.q.push(ar); };
+  let d = C.document;
+  C.Cal = C.Cal || function () {
+    let cal = C.Cal;
+    let ar = arguments;
+    if (!cal.loaded) {
+      cal.ns = {};
+      cal.q = cal.q || [];
+      d.head.appendChild(d.createElement("script")).src = A;
+      cal.loaded = true;
+    }
+    if (ar[0] === L) {
+      const api = function () { p(api, arguments); };
+      const namespace = ar[1];
+      api.q = api.q || [];
+      if (typeof namespace === "string") {
+        cal.ns[namespace] = cal.ns[namespace] || api;
+        p(cal.ns[namespace], ar);
+        p(cal, ["initNamespace", namespace]);
+      } else p(cal, ar);
+      return;
+    }
+    p(cal, ar);
+  };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+
+if (document.getElementById("cal-inline-booking")) {
+  Cal("init", "booking", { origin: "https://app.cal.com" });
+  Cal.ns.booking("inline", {
+    elementOrSelector: "#cal-inline-booking",
+    calLink: "englishtutorksenia/45-min-lesson",
+    layout: "month_view"
+  });
+  Cal.ns.booking("ui", {
+    theme: "light",
+    styles: {
+      branding: {
+        brandColor: "#2446D8"
+      }
+    },
+    hideEventTypeDetails: false,
+    layout: "month_view"
+  });
+}
+
+// --- 2. Multi-language System (EN / RU / UA) ---
 const translations = {
   en: {
-    page_title: "English Lessons Online - English Tutor Ksenia",
-    page_desc: "Learn English online with Ksenia, a professional tutor. Zoom lessons tailored to your level. Speak fluently, pass exams, and get 50% off your trial lesson!",
-    widget_tz: "🌍 Auto-detecting timezone",
-    day_mon: "Mon", day_tue: "Tue", day_wed: "Wed", day_thu: "Thu", day_fri: "Fri",
-    widget_month: "May 2026",
-    nav_about: "About", nav_video: "Video", nav_courses: "Courses",
-    nav_results: "Results", nav_reviews: "Reviews", nav_faq: "FAQ", nav_contact: "Contact",
-    hero_badge: "🎓 Online English Lessons via Zoom",
-    hero_h1_1: "Learning English Online",
-    hero_h1_2: "With a Personal Tutor",
-    hero_sub: "Lessons tailored to <em>your</em> goals, pace, and schedule.<br />Choose the course that fits you best.",
-    hero_offer: "your first trial lesson",
-    btn_book: "Book a Lesson", btn_watch: "▶ Watch Video", btn_book_now: "Book Now",
-    video_label: "Watch & Learn", video_title: "See How Lessons Work",
-    video_sub: "Get a feel for my teaching style before you book your first lesson",
-    about_label: "About Ksenia", about_title: "Your English Tutor",
-    about_badge: "years experience",
-    about_p1: "I am Ksenia, a professional English tutor teaching online via Zoom. I speak English and Russian fluently, and Ukrainian at a beginner level — enough to understand my students.",
-    about_p2: "My method is built around <strong>your individual goals</strong>: whether you want to pass an exam, speak fluently in business meetings, or simply enjoy American movies without subtitles.",
-    about_li1: "✅ Lessons in English or Russian",
-    about_li2: "✅ Flexible schedule — you pick the time",
-    about_li3: "✅ 100% unique author's teaching technique",
-    about_li4: "✅ Proven results with 700+ students",
-    courses_label: "What I Offer", courses_title: "Popular Courses",
-    courses_sub: "Every course is tailored to your level and learning objectives",
-    course1_title: "First Lesson (Trial)", course1_desc: "A 45-minute trial session to discuss your learning goals, determine your current English level, and create a personalized study plan.", course1_tag: "45 minutes • $10.00",
-    course2_title: "Conversation Practice", course2_desc: "Focus exclusively on speaking skills. Improve fluency, learn real-world idioms, expand active vocabulary, and build confidence talking about diverse topics.", course2_tag: "1 hour • $29.00",
-    course3_title: "Formal Tutoring", course3_desc: "A comprehensive, structured lesson covering all language aspects: speaking, grammar, listening, reading, and writing, tailored to your professional or personal needs.", course3_tag: "1 hour • $29.00",
-    courses_cta: "Book Your First Lesson — 50% Off",
-    stat1: "Students have successfully completed the course",
-    stat2: "Years of successful teaching",
-    stat3: "Adaptive class schedule",
-    stat4: "Unique author's teaching technique",
-    booking_label: "Get Started", booking_title: "Book Your First Lesson",
-    booking_sub: "Your first lesson is <strong>50% off</strong>. Pick a time that works for you.",
-    step1_title: "Choose your course", step1_desc: "Tell me your level and goal",
-    step2_title: "Pick a date & time", step2_desc: "Any time zone works",
-    step3_title: "Join via Zoom", step3_desc: "No downloads needed",
-    booking_question: "📞 Have questions? Call or message:",
-    booking_policy: "💳 Payment is required at booking to secure your slot. Full refund if cancelled at least 24 hours in advance.",
-    booking_policy_box: "💳 Payment secures your lesson. Full refund with 24h+ cancellation notice.",
-    booking_cta_title: "Schedule Your Lesson",
-    booking_cta_sub: "Click below to pick a time on my calendar",
-    booking_btn: "Open Booking Calendar",
-    booking_note: "* Secure booking via Cal.com",
-    testimonials_label: "Student Reviews", testimonials_title: "Testimonials",
-    review1_text: '"Who is on duty today? Напевно це речення ми запам\'ятали з уроків англійської мови назавжди. А от як почати спілкуватися з носіями мови? Як зрозуміти англійсько американські ідіоми яких так багато вживають у кінофільмах? У цьому мені допомогло спілкування онлайн з вчителем мови Ксенією. Я займаюсь в зручний для мене час у доброзичливій атмосфері і дізнаюсь багато нового про американські етикет, культуру та менталітет. Спробуйте і переконаєтесь самі."',
-    review2_text: '"Отличный репетитор! Пунктуальная, доброжелательная, умеет доходчиво объяснять материал. Я прошла 10 занятий, увидела значительный прогресс, обязательно продолжу уроки. Спасибо за хорошую работу!!"',
-    faq_label: "Questions & Answers",
-    faq1_q: "Why is your first lesson paid and not free?", faq1_a: "I value your time. A small nominal fee helps to ensure the student is dedicated to learn.",
-    faq2_q: "How often should I take classes with you?", faq2_a: "You can have classes as often as every day or every other day, and as minimum as one (1) time per week. Remember, 99% of the success of learning a language is being consistent and practicing every day. I recommend spending two (2) hours of self-study per each hour working with a teacher.",
-    faq3_q: "When will I see my first results?", faq3_a: "Results depend on consistency. Students who practice daily typically notice improvements within 2–4 weeks.",
-    faq4_q: "What languages do you speak?", faq4_a: "I speak English and Russian fluently. I also speak Ukrainian at a beginner level — enough to understand my students and make them feel comfortable.",
-    faq5_q: "What is your cancelling and rescheduling policy?", faq5_a: "Please give at least 24 hours notice to cancel or reschedule a lesson. A full refund is provided for cancellations made at least 24 hours in advance.",
-    faq6_q: "What payment methods do you accept?", faq6_a: "Visa, MasterCard, Discover, American Express, JCB, and PayPal.",
-    faq7_q: "What is your money back policy?", faq7_a: "Payment is required at the time of booking to secure your lesson slot. A full refund is provided for cancellations made at least 24 hours before the scheduled lesson. No refund for cancellations with less than 24 hours notice or completed lessons.",
-    faq8_q: "What if I am running late?", faq8_a: "The lesson will be started and finished at the scheduled time.",
-    footer_desc: "Online English Lessons via Zoom. Teaching in English, Russian and Ukrainian.",
-    footer_links: "Quick Links", footer_book: "Book a Lesson",
-    footer_connect: "Connect with Me", footer_message: "Send a Message",
-    form_name: "Your name", form_email: "Your email", form_msg: "Your message",
-    form_send: "Send Message", form_success: "✅ Message sent! I'll get back to you soon."
+    page_title: "English Tutor Ksenia — 1-on-1 English Lessons on Zoom",
+    page_desc: "Personal English lessons with Ksenia, a tutor with 6+ years of experience and 700+ students. 45-min trial lesson for $10.",
+    nav_lessons: "Lessons",
+    nav_reviews: "Reviews",
+    nav_faq: "FAQ",
+    nav_book: "Book a trial",
+    hero_badge: "One to one English lessons on Zoom",
+    hero_h1: "You studied English for years.<br>Now start speaking it.",
+    hero_sub: "Personal lessons with Ksenia, a tutor with 6+ years of experience and 700+ students. Practice in English from the first minute, with explanations in Russian whenever you need them.",
+    hero_cta: "Book a $10 trial lesson",
+    hero_note: "45 minutes · level check and personal plan · full refund if you cancel 24 hours ahead",
+    hero_social: '"After 10 lessons I saw real progress." <span style="color: #555B6B">Olga</span>',
+    hero_tutor: "Ksenia · English tutor",
+    problem_h2: "You know the rules. The words just won't come.",
+    problem_p: "Most of my students learned English at school or with apps: they understand what they read, but feel anxious before team meetings, job interviews or trips abroad. The solution isn't another textbook. It is talking, one to one, with someone who gently catches your mistakes and shows you how native speakers actually say it.",
+    benefits_h2: "What changes when you study with me",
+    b1_title: "You do the talking",
+    b1_desc: "Lessons are built around speaking, with real idioms and everyday rhythm. Not repeating exercises out loud.",
+    b2_title: "Nothing stays confusing",
+    b2_desc: "Grammar is explained in Russian when English alone would slow you down, so you never leave a lesson puzzled.",
+    b3_title: "A plan built on your goal",
+    b3_desc: "A job interview, meetings at work, IELTS or TOEFL, or films without subtitles: every exercise connects to what you actually need.",
+    b4_title: "Lessons that fit your week",
+    b4_desc: "Book any free slot in your own time zone, and move it with 24 hours notice whenever life gets busy.",
+    b5_title: "Culture, not only grammar",
+    b5_desc: "Learn how Americans really say things, and the etiquette behind small talk, emails and workplace conversations.",
+    tagline_1: "You already know more English than you think.",
+    tagline_2: "Let's move it from your notebook into your conversations.",
+    about_h2: "Hi, I'm Ksenia",
+    about_p1: "I have taught English online for more than six years and worked with over 700 students, from beginners to professionals preparing for interviews. I speak English and Russian fluently and understand Ukrainian, so you can always ask a question in the language you think in.",
+    about_p2: "Every lesson starts from one question: what do you need English for?",
+    video_title: "Meet me in 2 minutes",
+    lessons_h2: "Choose your lesson",
+    lessons_sub: "Every lesson is 1-on-1 on Zoom. Materials, personal notes and homework are included.",
+    card_trial_badge: "FIRST LESSON",
+    card_trial_title: "Trial lesson",
+    card_trial_desc: "Level check, your goals, and a personal study plan. We test how we work together.",
+    card_conv_title: "Conversation practice",
+    card_conv_desc: "Fluency, idioms and confidence in real conversations. We talk about topics you actually care about.",
+    card_comp_title: "Complete English",
+    card_comp_desc: "Speaking, grammar, listening, reading and writing in balance. Structured progress step by step.",
+    card_trial_btn: "Book a $10 trial lesson",
+    card_lesson_btn: "Book this lesson",
+    pkg_title: "Save with a package",
+    pkg_desc: "Use them for any mix of Conversation practice and Complete English.",
+    pkg_5_title: "5 lessons · valid 2 months",
+    pkg_5_note: "$27 a lesson · save $10",
+    pkg_10_title: "10 lessons · valid 4 months",
+    pkg_10_note: "$26 a lesson · save $30",
+    how_h2: "From booking to speaking in three steps",
+    s1_title: "Book your trial",
+    s1_desc: "Pick a time in your own time zone and pay $10 securely.",
+    s2_title: "Meet on Zoom",
+    s2_desc: "It opens in your browser, no download needed. We check your level and start talking.",
+    s3_title: "Get your plan",
+    s3_desc: "You leave with a study plan and a recommended course, and decide whether to continue.",
+    reviews_h2: "What students say",
+    stat_students: "students taught",
+    stat_years: "years teaching online",
+    stat_langs: "lesson languages, Ukrainian understood",
+    r1_text: '"A great tutor. Punctual, friendly, and she explains things clearly. After 10 lessons I saw real progress, and I'm definitely continuing."',
+    r2_text: '"We all remember 'Who is on duty today?' from school. But how do you actually talk to native speakers, or understand all the idioms in American films? Lessons with Ksenia helped me with exactly that."',
+    faq_h2: "Questions before your first lesson",
+    cta_h2: "Your first English conversation can be this week",
+    cta_p: "Start with one 45 minute trial lesson for $10. If it isn't for you, get a full refund for any lesson you haven't taken.",
+    cta_btn: "Book a $10 trial lesson",
+    cta_tg: 'Questions first? <a href="https://t.me/englishtutorksenia" style="color: #FFFFFF; font-weight: 600; text-decoration: underline">Message me on Telegram</a>',
+    footer_desc: "One to one English lessons on Zoom, in English, Russian and Ukrainian.",
+    footer_copy: "© 2021–2026 English Tutor Ksenia"
   },
   ru: {
-    page_title: "Английский язык онлайн - Репетитор Ксения",
-    page_desc: "Учите английский онлайн с репетитором Ксенией. Индивидуальные уроки в Zoom на английском или русском. Скидка 50% на пробный урок!",
-    widget_tz: "🌍 Определение часового пояса",
-    day_mon: "Пн", day_tue: "Вт", day_wed: "Ср", day_thu: "Чт", day_fri: "Пт",
-    widget_month: "Май 2026",
-    nav_about: "Обо мне", nav_video: "Видео", nav_courses: "Курсы",
-    nav_results: "Результаты", nav_reviews: "Отзывы", nav_faq: "FAQ", nav_contact: "Контакты",
-    hero_badge: "🎓 Онлайн уроки английского по Zoom",
-    hero_h1_1: "Изучение английского онлайн",
-    hero_h1_2: "с персональным репетитором",
-    hero_sub: "Занятия подстроены под <em>ваши</em> цели, темп и расписание.<br />Выберите подходящий курс.",
-    hero_offer: "скидка на первый пробный урок",
-    btn_book: "Записаться на урок", btn_watch: "▶ Смотреть видео", btn_book_now: "Записаться",
-    video_label: "Смотри и учись", video_title: "Как проходят занятия",
-    video_sub: "Познакомьтесь с моим стилем преподавания перед первым уроком",
-    about_label: "О Ксении", about_title: "Ваш репетитор по английскому",
-    about_badge: "лет опыта",
-    about_p1: "Меня зовут Ксения, я профессиональный репетитор по английскому языку. Провожу онлайн-занятия по Zoom. Свободно говорю на английском и русском; украинский понимаю на начальном уровне.",
-    about_p2: "Мой метод строится на <strong>ваших индивидуальных целях</strong>: хотите сдать экзамен, свободно говорить на деловых встречах или смотреть американские фильмы в оригинале.",
-    about_li1: "✅ Занятия на английском, украинском или русском",
-    about_li2: "✅ Гибкое расписание — вы выбираете время",
-    about_li3: "✅ 100% авторская методика преподавания",
-    about_li4: "✅ Проверенные результаты с 700+ студентами",
-    courses_label: "Что я предлагаю", courses_title: "Популярные курсы",
-    courses_sub: "Каждый курс адаптирован под ваш уровень и цели",
-    course1_title: "Пробный урок", course1_desc: "Пробное 45-минутное занятие для обсуждения ваших целей обучения, определения текущего уровня английского и составления индивидуального плана.", course1_tag: "45 минут • $10.00",
-    course2_title: "Разговорная практика", course2_desc: "Фокус исключительно на разговорных навыках. Улучшайте беглость речи, изучайте живые идиомы, расширяйте активный словарный запас и преодолевайте языковой барьер.", course2_tag: "1 час • $29.00",
-    course3_title: "Академическое обучение", course3_desc: "Комплексный структурированный урок, охватывающий все аспекты языка: говорение, грамматику, аудирование, чтение и письмо, адаптированный под ваши цели.", course3_tag: "1 час • $29.00",
-    courses_cta: "Записаться на первый урок — скидка 50%",
-    stat1: "Студентов успешно прошли курс",
-    stat2: "Лет успешной работы",
-    stat3: "Гибкое расписание занятий",
-    stat4: "Авторская методика преподавания",
-    booking_label: "Начать", booking_title: "Записаться на первый урок",
-    booking_sub: "Первый урок со скидкой <strong>50%</strong>. Выберите удобное время.",
-    step1_title: "Выберите курс", step1_desc: "Расскажите о своём уровне и цели",
-    step2_title: "Выберите дату и время", step2_desc: "Любой часовой пояс",
-    step3_title: "Подключитесь по Zoom", step3_desc: "Установка не требуется",
-    booking_question: "📞 Есть вопросы? Звоните или пишите:",
-    booking_policy: "💳 Оплата при бронировании подтверждает ваше место. Полный возврат при отмене не менее чем за 24 часа.",
-    booking_policy_box: "💳 Оплата подтверждает ваш урок. Полный возврат при отмене за 24ч+.",
-    booking_cta_title: "Запланировать урок",
-    booking_cta_sub: "Нажмите ниже, чтобы выбрать время в моём календаре",
-    booking_btn: "Открыть календарь записи",
-    booking_note: "* Надежное бронирование через Cal.com",
-    testimonials_label: "Отзывы студентов", testimonials_title: "Отзывы",
-    review1_text: '"Who is on duty today? Напевно це речення ми запам\'ятали з уроків англійської мови назавжди. У цьому мені допомогло спілкування онлайн з вчителем мови Ксенією. Спробуйте і переконаєтесь самі."',
-    review2_text: '"Отличный репетитор! Пунктуальная, доброжелательная, умеет доходчиво объяснять материал. Я прошла 10 занятий, увидела значительный прогресс, обязательно продолжу уроки. Спасибо за хорошую работу!!"',
-    faq_label: "Вопросы и ответы",
-    faq1_q: "Почему первый урок платный, а не бесплатный?", faq1_a: "Я ценю ваше время. Небольшая символическая плата гарантирует серьёзный настрой студента.",
-    faq2_q: "Как часто нужно заниматься?", faq2_a: "Можно заниматься каждый день или через день, минимум — один раз в неделю. 99% успеха — это регулярность. Рекомендую тратить 2 часа самостоятельной практики на каждый час занятий с преподавателем.",
-    faq3_q: "Когда появятся первые результаты?", faq3_a: "При ежедневной практике улучшения заметны уже через 2–4 недели. Главное — регулярность.",
-    faq4_q: "На каких языках вы говорите?", faq4_a: "Я свободно говорю на английском и русском языках. Также говорю на украинском на начальном уровне — достаточно, чтобы понимать студентов и создать комфортную атмосферу.",
-    faq5_q: "Какова политика отмены и переноса занятий?", faq5_a: "Пожалуйста, предупреждайте об отмене за 24 часа. Полный возврат средств при отмене не менее чем за 24 часа до занятия.",
-    faq6_q: "Какие способы оплаты вы принимаете?", faq6_a: "Visa, MasterCard, Discover, American Express, JCB и PayPal.",
-    faq7_q: "Какова политика возврата денег?", faq7_a: "Оплата требуется при бронировании для подтверждения вашего урока. Полный возврат возможен при отмене не менее чем за 24 часа до занятия. При отмене менее чем за 24 часа или за проведённые уроки деньги не возвращаются.",
-    faq8_q: "Что если я опаздываю?", faq8_a: "Урок начинается и заканчивается по расписанию.",
-    footer_desc: "Онлайн уроки английского по Zoom. Преподавание на английском, русском и украинском.",
-    footer_links: "Быстрые ссылки", footer_book: "Записаться",
-    footer_connect: "Связаться со мной", footer_message: "Написать сообщение",
-    form_name: "Ваше имя", form_email: "Ваш email", form_msg: "Ваше сообщение",
-    form_send: "Отправить", form_success: "✅ Сообщение отправлено! Скоро отвечу."
+    page_title: "Репетитор английского языка Ксения — Уроки онлайн в Zoom",
+    page_desc: "Индивидуальные уроки английского с Ксенией — опыт 6+ лет, 700+ учеников. Пробный урок 45 минут за $10.",
+    nav_lessons: "Уроки",
+    nav_reviews: "Отзывы",
+    nav_faq: "FAQ",
+    nav_book: "Записаться",
+    hero_badge: "Индивидуальные уроки английского по Zoom",
+    hero_h1: "Учите английский годами?<br>Пора начать говорить.",
+    hero_sub: "Персональные уроки с Ксенией — репетитором с опытом более 6 лет и 700+ учеников. Практика на английском с первой минуты с пояснениями на русском, когда это нужно.",
+    hero_cta: "Записаться на пробный урок за $10",
+    hero_note: "45 минут · определение уровня и личный план · полный возврат при отмене за 24 часа",
+    hero_social: '«После 10 уроков я увидела реальный прогресс.» <span style="color: #555B6B">Ольга</span>',
+    hero_tutor: "Ксения · Репетитор английского",
+    problem_h2: "Вы знаете правила. Но слова словно застревают, когда нужно говорить.",
+    problem_p: "Большинство моих учеников учили английский в школе или в приложениях: они понимают текст, но испытывают тревогу перед рабочими встречами, собеседованиями или поездками. Решение — не очередной учебник, а живая практика один на один с преподавателем, который бережно подскажет ошибки и научит говорить так, как говорят носители.",
+    benefits_h2: "Что меняется, когда вы занимаетесь со мной",
+    b1_title: "Говорите вы",
+    b1_desc: "Уроки построены вокруг живой речи, современных идиом и естественного темпа, а не заучивания упражнений.",
+    b2_title: "Всё становится понятно",
+    b2_desc: "Грамматика объясняется на русском, если на английском это займет слишком много времени. Никаких непонятных пробелов.",
+    b3_title: "План под вашу цель",
+    b3_desc: "Собеседование, рабочие встречи, сдача IELTS/TOEFL или кино без субтитров: каждый урок работает на конкретную задачу.",
+    b4_title: "Удобный график",
+    b4_desc: "Бронируйте любое свободное окно в вашем часовом поясе и переносите уроки за 24 часа при необходимости.",
+    b5_title: "Культура, а не только грамматика",
+    b5_desc: "Вы узнаете, как на самом деле говорят американцы, правила small talk, деловой этикет и тонкости живого общения.",
+    tagline_1: "Вы уже знаете английский лучше, чем вам кажется.",
+    tagline_2: "Давайте перенесем его из тетрадей в живую речь.",
+    about_h2: "Привет, я Ксения",
+    about_p1: "Я преподаю английский онлайн уже более шести лет и провела занятия более чем для 700 учеников — от начинающих до специалистов, готовящихся к собеседованиям. Я свободно говорю на английском и русском и понимаю украинский, поэтому вы всегда можете задать вопрос на родном языке.",
+    about_p2: "Каждый урок начинается с одного вопроса: для чего английский нужен именно вам?",
+    video_title: "Познакомьтесь со мной за 2 минуты",
+    lessons_h2: "Выберите формат урока",
+    lessons_sub: "Каждый урок проходит 1-на-1 в Zoom. Все материалы, конспекты и домашние задания включены.",
+    card_trial_badge: "ПЕРВЫЙ УРОК",
+    card_trial_title: "Пробный урок",
+    card_trial_desc: "Определение уровня, целей и составление индивидуального плана обучения.",
+    card_conv_title: "Разговорная практика",
+    card_conv_desc: "Беглость речи, идиомы и уверенность в диалоге на темы, которые интересны именно вам.",
+    card_comp_title: "Комплексный курс",
+    card_comp_desc: "Сбалансированное развитие разговорной речи, грамматики, аудирования и письма.",
+    card_trial_btn: "Записаться на пробный урок за $10",
+    card_lesson_btn: "Выбрать этот курс",
+    pkg_title: "Выгодные пакеты",
+    pkg_desc: "Используйте пакет для любых уроков разговорной практики или комплексного курса.",
+    pkg_5_title: "5 уроков · действуют 2 месяца",
+    pkg_5_note: "$27 за урок · скидка $10",
+    pkg_10_title: "10 уроков · действуют 4 месяца",
+    pkg_10_note: "$26 за урок · скидка $30",
+    how_h2: "От бронирования до первого разговора — 3 шага",
+    s1_title: "Запишитесь на урок",
+    s1_desc: "Выберите удобное время в вашем часовом поясе и безопасно оплатите $10.",
+    s2_title: "Встречаемся в Zoom",
+    s2_desc: "Урок открывается прямо в браузере. Мы определим уровень и сразу начнем говорить.",
+    s3_title: "Получите ваш план",
+    s3_desc: "Вы уйдете с персональным планом занятий и решите, хотите ли продолжить обучение.",
+    reviews_h2: "Что говорят ученики",
+    stat_students: "учеников обучено",
+    stat_years: "лет преподавания онлайн",
+    stat_langs: "языки занятий (украинский понимает)",
+    r1_text: '«Отличный репетитор! Пунктуальная, доброжелательная, умеет доходчиво объяснять материал. Я прошла 10 занятий, увидела значительный прогресс, обязательно продолжу уроки.»',
+    r2_text: '«Все мы помним школьное "Who is on duty today?". Но как на самом деле общаться с иностранцами или понимать идиомы в фильмах? Уроки с Ксенией помогли именно в этом!»',
+    faq_h2: "Частые вопросы перед первым уроком",
+    cta_h2: "Ваш первый урок английского может быть уже на этой неделе",
+    cta_p: "Начните с 45-минутного пробного урока за $10. Если не понравится — полный возврат денег за неиспользованные уроки.",
+    cta_btn: "Записаться на пробный урок за $10",
+    cta_tg: 'Есть вопросы? <a href="https://t.me/englishtutorksenia" style="color: #FFFFFF; font-weight: 600; text-decoration: underline">Напишите мне в Telegram</a>',
+    footer_desc: "Индивидуальные уроки английского по Zoom на английском, русском и украинском языках.",
+    footer_copy: "© 2021–2026 English Tutor Ksenia"
   },
   ua: {
-    page_title: "Англійська мова онлайн - Репетитор Ксенія",
-    page_desc: "Вивчайте англійську онлайн з репетитором Ксенією. Індивідуальні уроки в Zoom англійською, українською чи російською. Знижка 50% на пробне заняття!",
-    widget_tz: "🌍 Визначення часового поясу",
-    day_mon: "Пн", day_tue: "Вт", day_wed: "Ср", day_thu: "Чт", day_fri: "Пт",
-    widget_month: "Травень 2026",
-    nav_about: "Про мене", nav_video: "Відео", nav_courses: "Курси",
-    nav_results: "Результати", nav_reviews: "Відгуки", nav_faq: "FAQ", nav_contact: "Контакти",
-    hero_badge: "🎓 Онлайн уроки англійської по Zoom",
-    hero_h1_1: "Вивчення англійської онлайн",
-    hero_h1_2: "з персональним репетитором",
-    hero_sub: "Заняття підлаштовані під <em>ваші</em> цілі, темп і розклад.<br />Оберіть курс, який підходить саме вам.",
-    hero_offer: "знижка на перший пробний урок",
-    btn_book: "Записатися на урок", btn_watch: "▶ Дивитися відео", btn_book_now: "Записатись",
-    video_label: "Дивись і вчись", video_title: "Як проходять заняття",
-    video_sub: "Ознайомтеся з моїм стилем викладання перед першим уроком",
-    about_label: "Про Ксенію", about_title: "Ваш репетитор з англійської",
-    about_badge: "роки досвіду",
-    about_p1: "Мене звати Ксенія, я професійний репетитор з англійської мови. Проводжу онлайн-заняття по Zoom. Вільно розмовляю англійською та російською; українську розумію на початковому рівні.",
-    about_p2: "Мій метод побудований на <strong>ваших індивідуальних цілях</strong>: хочете скласти іспит, вільно спілкуватися на ділових зустрічах або дивитися американські фільми в оригіналі.",
-    about_li1: "✅ Заняття англійською, українською або російською",
-    about_li2: "✅ Гнучкий графік — ви обираєте час",
-    about_li3: "✅ 100% авторська методика викладання",
-    about_li4: "✅ Перевірені результати з 700+ студентами",
-    courses_label: "Що я пропоную", courses_title: "Популярні курси",
-    courses_sub: "Кожен курс адаптований під ваш рівень та цілі",
-    course1_title: "Пробне заняття", course1_desc: "Пробне 45-хвилинне заняття для обговорення ваших цілей навчання, визначення поточного рівня англійської та складання індивідуального плану.", course1_tag: "45 хвилин • $10.00",
-    course2_title: "Розмовна практика", course2_desc: "Фокус виключно на розмовних навичках. Покращуйте швидкість мовлення, вивчайте живі ідіоми, розширюйте словниковий запас та долайте мовний бар'єр.", course2_tag: "1 година • $29.00",
-    course3_title: "Академічне навчання", course3_desc: "Комплексний структурований урок, що охоплює всі аспекти мови: говоріння, граматику, аудіювання, читання та письмо, адаптований під ваші цілі.", course3_tag: "1 година • $29.00",
-    courses_cta: "Записатися на перший урок — знижка 50%",
-    stat1: "Студентів успішно пройшли курс",
-    stat2: "Роки успішної роботи",
-    stat3: "Гнучкий графік занять",
-    stat4: "Авторська методика викладання",
-    booking_label: "Почати", booking_title: "Записатися на перший урок",
-    booking_sub: "Перший урок зі знижкою <strong>50%</strong>. Оберіть зручний час.",
-    step1_title: "Оберіть курс", step1_desc: "Розкажіть про свій рівень та ціль",
-    step2_title: "Оберіть дату і час", step2_desc: "Будь-який часовий пояс",
-    step3_title: "Підключіться по Zoom", step3_desc: "Встановлення не потрібне",
-    booking_question: "📞 Є питання? Телефонуйте або пишіть:",
-    booking_policy: "💳 Оплата при бронюванні підтверджує ваше місце. Повне повернення коштів при скасуванні не менш ніж за 24 години.",
-    booking_policy_box: "💳 Оплата підтверджує ваш урок. Повне повернення при скасуванні за 24г+.",
-    booking_cta_title: "Запланувати урок",
-    booking_cta_sub: "Натисніть нижче, щоб обрати час у моєму календарі",
-    booking_btn: "Відкрити календар запису",
-    booking_note: "* Надійне бронювання через Cal.com",
-    testimonials_label: "Відгуки студентів", testimonials_title: "Відгуки",
-    review1_text: '"Who is on duty today? Напевно це речення ми запам\'ятали з уроків англійської мови назавжди. У цьому мені допомогло спілкування онлайн з вчителем мови Ксенією. Я займаюсь в зручний для мене час у доброзичливій атмосфері. Спробуйте і переконаєтесь самі."',
-    review2_text: '"Відмінний репетитор! Пунктуальна, доброзичлива, вміє дохідливо пояснювати матеріал. Я пройшла 10 занять, побачила значний прогрес, обов\'язково продовжу уроки. Дякую за хорошу роботу!!"',
-    faq_label: "Питання та відповіді",
-    faq1_q: "Чому перший урок платний, а не безкоштовний?", faq1_a: "Я ціную ваш час. Невелика символічна плата гарантує серйозний настрій студента.",
-    faq2_q: "Як часто потрібно займатися?", faq2_a: "Можна займатися щодня або через день, мінімум — один раз на тиждень. 99% успіху — це регулярність. Рекомендую витрачати 2 години самостійної практики на кожну годину занять з викладачем.",
-    faq3_q: "Коли з'являться перші результати?", faq3_a: "При щоденній практиці покращення помітні вже через 2–4 тижні. Головне — регулярність.",
-    faq4_q: "Якими мовами ви розмовляєте?", faq4_a: "Я вільно розмовляю англійською та російською. Також розмовляю українською на початковому рівні — достатньо, щоб розуміти студентів та зробити їх комфортними.",
-    faq5_q: "Яка політика скасування та перенесення занять?", faq5_a: "Будь ласка, попереджайте про скасування за 24 години. Повне повернення коштів при скасуванні не менш ніж за 24 години до заняття.",
-    faq6_q: "Які способи оплати ви приймаєте?", faq6_a: "Visa, MasterCard, Discover, American Express, JCB та PayPal.",
-    faq7_q: "Яка політика повернення коштів?", faq7_a: "Оплата потрібна при бронюванні для підтвердження вашого уроку. Повне повернення можливе при скасуванні не менш ніж за 24 години до заняття. При скасуванні менш ніж за 24 години або за проведені уроки кошти не повертаються.",
-    faq8_q: "Що якщо я запізнююся?", faq8_a: "Урок починається і закінчується за розкладом.",
-    footer_desc: "Онлайн уроки англійської по Zoom. Викладання англійською, російською та українською.",
-    footer_links: "Швидкі посилання", footer_book: "Записатися",
-    footer_connect: "Зв'язатися зі мною", footer_message: "Написати повідомлення",
-    form_name: "Ваше ім'я", form_email: "Ваш email", form_msg: "Ваше повідомлення",
-    form_send: "Надіслати", form_success: "✅ Повідомлення надіслано! Незабаром відповім."
+    page_title: "Репетитор англійської мови Ксенія — Онлайн уроки в Zoom",
+    page_desc: "Індивідуальні уроки англійської з Ксенією — досвід 6+ років, 700+ учнів. Пробний урок 45 хвилин за $10.",
+    nav_lessons: "Уроки",
+    nav_reviews: "Відгуки",
+    nav_faq: "FAQ",
+    nav_book: "Записатись",
+    hero_badge: "Індивідуальні уроки англійської по Zoom",
+    hero_h1: "Вчите англійську роками?<br>Час почати говорити.",
+    hero_sub: "Персональні уроки з Ксенією — репетитором з досвідом понад 6 років та 700+ учнів. Практика англійською з першої хвилини з поясненнями, коли це потрібно.",
+    hero_cta: "Записатися на пробний урок за $10",
+    hero_note: "45 хвилин · визначення рівня та особистий план · повне повернення при скасуванні за 24 години",
+    hero_social: '«Після 10 уроків я побачила реальний прогрес.» <span style="color: #555B6B">Ольга</span>',
+    hero_tutor: "Ксенія · Репетитор англійської",
+    problem_h2: "Ви знаєте правила. Але слова наче застряють, коли треба говорити.",
+    problem_p: "Більшість моїх учнів вчили англійську в школі або в додатках: вони розуміють текст, але відчувають тривогу перед робочими зустрічами, співбесідами або поїздками. Рішення — не черговий підручник, а жива практика один на один з викладачем, який дбайливо виправить помилки і навчить говорити так, як говорять носії.",
+    benefits_h2: "Що змінюється, коли ви займаєтесь зі мною",
+    b1_title: "Говорите ви",
+    b1_desc: "Уроки побудовані навколо розмовної практики, сучасних ідіом та природного темпу, а не повторення вправ.",
+    b2_title: "Усе стає зрозуміло",
+    b2_desc: "Граматика пояснюється просто та доступно, якщо англійською це складно. Жодних незрозумілих тем.",
+    b3_title: "План під вашу мету",
+    b3_desc: "Співбесіда, робочі дзвінки, складання IELTS/TOEFL або фільми без субтитрів: кожен урок націлений на результат.",
+    b4_title: "Зручний розклад",
+    b4_desc: "Бронюйте будь-яке вільне вікно у вашому часовому поясі та переносьте уроки за 24 години.",
+    b5_title: "Культура, а не лише граматика",
+    b5_desc: "Дізнайтеся, як насправді спілкуються американці, правила small talk та тонкощі живого спілкування.",
+    tagline_1: "Ви вже знаєте англійську краще, ніж вам здається.",
+    tagline_2: "Давайте перенесемо її із зошитів у живе спілкування.",
+    about_h2: "Привіт, я Ксенія",
+    about_p1: "Я викладаю англійську онлайн уже понад шість років і провела заняття для більш ніж 700 учнів — від початківців до спеціалістів, які готуються до співбесід. Я вільно розмовляю англійською та російською і розумію українську, тож ви завжди можете поставити запитання рідною мовою.",
+    about_p2: "Кожен урок починається з одного питання: для чого англійська потрібна саме вам?",
+    video_title: "Познайомтеся зі мною за 2 хвилини",
+    lessons_h2: "Оберіть формат уроку",
+    lessons_sub: "Кожен урок проходить 1-на-1 в Zoom. Усі матеріали, конспекти та домашні завдання включені.",
+    card_trial_badge: "ПЕРШИЙ УРОК",
+    card_trial_title: "Пробний урок",
+    card_trial_desc: "Визначення рівня, цілей та складання індивідуального плану навчання.",
+    card_conv_title: "Розмовна практика",
+    card_conv_desc: "Вільне мовлення, ідіоми та впевненість у спілкуванні на теми, які цікаві саме вам.",
+    card_comp_title: "Комплексний курс",
+    card_comp_desc: "Збалансований розвиток розмовної мови, граматики, аудіювання та письма.",
+    card_trial_btn: "Записатися на пробний урок за $10",
+    card_lesson_btn: "Обрати цей курс",
+    pkg_title: "Вигідні пакети",
+    pkg_desc: "Використовуйте пакет для будь-яких уроків розмовної практики або комплексного курсу.",
+    pkg_5_title: "5 уроків · дійсні 2 місяці",
+    pkg_5_note: "$27 за урок · знижка $10",
+    pkg_10_title: "10 уроків · дійсні 4 місяці",
+    pkg_10_note: "$26 за урок · знижка $30",
+    how_h2: "Від бронювання до першого уроку — 3 кроки",
+    s1_title: "Запишіться на урок",
+    s1_desc: "Оберіть зручний час у вашому часовому поясі та безпечно сплатіть $10.",
+    s2_title: "Зустріч у Zoom",
+    s2_desc: "Урок відкривається прямо в браузері. Ми визначимо рівень і одразу почнемо говорити.",
+    s3_title: "Отримайте ваш план",
+    s3_desc: "Ви отримаєте індивідуальний план навчання і вирішите, чи хочете продовжувати.",
+    reviews_h2: "Що кажуть учні",
+    stat_students: "учнів навчено",
+    stat_years: "років викладання онлайн",
+    stat_langs: "мови уроків (українську розуміє)",
+    r1_text: '«Відмінний репетитор! Пунктуальна, доброзичлива, вміє дохідливо пояснювати матеріал. Я пройшла 10 занять, побачила значний прогрес, обов'язково продовжу уроки. Дякую за хорошу роботу!!»',
+    r2_text: '«Усі ми пам'ятаємо шкільне "Who is on duty today?". Але як насправді спілкуватися з іноземцями або розуміти ідіоми в американських фільмах? Уроки з Ксенією допомогли саме в цьому!»',
+    faq_h2: "Часті запитання перед першим уроком",
+    cta_h2: "Ваш перший урок англійської може відбутися вже цього тижня",
+    cta_p: "Почніть із 45-хвилинного пробного уроку за $10. Якщо вам не підійде — повне повернення коштів за непроведені уроки.",
+    cta_btn: "Записатися на пробний урок за $10",
+    cta_tg: 'Маєте запитання? <a href="https://t.me/englishtutorksenia" style="color: #FFFFFF; font-weight: 600; text-decoration: underline">Напишіть мені в Telegram</a>',
+    footer_desc: "Індивідуальні уроки англійської по Zoom англійською, російською та українською мовами.",
+    footer_copy: "© 2021–2026 English Tutor Ksenia"
   }
 };
 
-// =============================================
-//  LANGUAGE SWITCHER
-// =============================================
-const urlParams = new URLSearchParams(window.location.search);
-const urlLang = urlParams.get('lang');
-let currentLang = ['en', 'ru', 'ua'].includes(urlLang) ? urlLang : (localStorage.getItem('lang') || 'en');
+let currentLang = "en";
 
 function setLang(lang) {
+  if (!translations[lang]) return;
   currentLang = lang;
-  localStorage.setItem('lang', lang);
+  try {
+    localStorage.setItem("lang", lang);
+  } catch (e) {}
 
-  // Update html attribute
-  document.documentElement.setAttribute('data-lang', lang);
-  document.documentElement.setAttribute('lang', lang === 'ua' ? 'uk' : lang);
+  document.documentElement.lang = lang;
+  document.documentElement.setAttribute("data-lang", lang);
 
+  // Update active buttons
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+  });
+
+  // Update text elements with data-i18n
   const t = translations[lang];
-
-  // Update document title
-  if (t.page_title) {
-    document.title = t.page_title;
-  }
-  // Update meta description
-  const metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc && t.page_desc) {
-    metaDesc.setAttribute('content', t.page_desc);
-  }
-
-  // Update all [data-i18n] elements
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (t[key]) {
       el.innerHTML = t[key];
     }
   });
 
-  // Update placeholder attributes
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (t[key] !== undefined) {
-      el.setAttribute('placeholder', t[key]);
-    }
-  });
-
-  // Update active button state — both desktop and mobile
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-  });
+  // Update document title and meta description
+  if (t.page_title) document.title = t.page_title;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && t.page_desc) metaDesc.setAttribute("content", t.page_desc);
 }
 
-// Apply saved language on load
-setLang(currentLang);
+// Initial language detection from URL param or localStorage
+window.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const langParam = urlParams.get("lang");
+  let savedLang = null;
+  try {
+    savedLang = localStorage.getItem("lang");
+  } catch (e) {}
 
-// =============================================
-//  NAVBAR SCROLL
-// =============================================
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
-
-// =============================================
-//  MOBILE MENU
-// =============================================
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileMenu.classList.toggle('open');
+  const initialLang = langParam || savedLang || "en";
+  if (initialLang && translations[initialLang]) {
+    setLang(initialLang);
+  }
 });
-
-function closeMobile() {
-  hamburger.classList.remove('active');
-  mobileMenu.classList.remove('open');
-}
-
-// =============================================
-//  SCROLL-REVEAL (fade-in)
-// =============================================
-const fadeEls = document.querySelectorAll('.fade-in');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-fadeEls.forEach(el => revealObserver.observe(el));
-
-// =============================================
-//  ANIMATED COUNTERS
-// =============================================
-function animateCounter(el) {
-  const target = parseInt(el.dataset.target, 10);
-  if (isNaN(target)) return;
-  const duration = 1800;
-  const start = performance.now();
-  function step(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(ease * target);
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = target;
-  }
-  requestAnimationFrame(step);
-}
-
-const statsSection = document.getElementById('stats');
-const statsObserver = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) {
-    document.querySelectorAll('.stat-number[data-target]').forEach(animateCounter);
-    statsObserver.disconnect();
-  }
-}, { threshold: 0.3 });
-if (statsSection) statsObserver.observe(statsSection);
-
-// =============================================
-//  FAQ ACCORDION
-// =============================================
-function toggleFaq(btn) {
-  const item = btn.closest('.faq-item');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-// =============================================
-//  CONTACT FORM
-// =============================================
-function handleForm(e) {
-  e.preventDefault();
-  const name    = document.getElementById('form-name').value.trim();
-  const email   = document.getElementById('form-email').value.trim();
-  const message = document.getElementById('form-message').value.trim();
-  if (!name || !email || !message) return;
-
-  const subject = encodeURIComponent(`Message from ${name} — English Tutor Ksenia`);
-  const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-  window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
-
-  const successEl = document.getElementById('formSuccess');
-  successEl.style.display = 'block';
-  e.target.reset();
-  setTimeout(() => { successEl.style.display = 'none'; }, 6000);
-}
-
-// =============================================
-//  SMOOTH ACTIVE NAV HIGHLIGHT
-// =============================================
-const sections = document.querySelectorAll('section[id], footer[id]');
-const navLinks  = document.querySelectorAll('nav a, .mobile-menu a');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(sec => {
-    if (window.scrollY >= sec.offsetTop - 100) current = sec.getAttribute('id');
-  });
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-  });
-}, { passive: true });
-
