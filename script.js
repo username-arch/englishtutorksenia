@@ -152,7 +152,8 @@ const translations = {
     "footer_desc": "One to one English lessons on Zoom, in English, Russian and Ukrainian.",
     "footer_privacy": "Privacy policy",
     "footer_terms": "Terms",
-    "footer_copy": "© 2021–2026 English Tutor Ksenia"
+    "footer_copy": "© 2021–2026 English Tutor Ksenia",
+    "pkg_btn": "Buy package"
   },
   "ru": {
     "page_title": "Репетитор английского языка Ксения — Уроки онлайн в Zoom",
@@ -255,7 +256,8 @@ const translations = {
     "footer_desc": "Индивидуальные уроки английского по Zoom на английском, русском и украинском языках.",
     "footer_privacy": "Политика конфиденциальности",
     "footer_terms": "Условия",
-    "footer_copy": "© 2021–2026 English Tutor Ksenia"
+    "footer_copy": "© 2021–2026 English Tutor Ksenia",
+    "pkg_btn": "Купить пакет"
   },
   "ua": {
     "page_title": "Репетитор англійської мови Ксенія — Онлайн уроки в Zoom",
@@ -358,7 +360,8 @@ const translations = {
     "footer_desc": "Індивідуальні уроки англійської по Zoom англійською, російською та українською мовами.",
     "footer_privacy": "Політика конфіденційності",
     "footer_terms": "Умови",
-    "footer_copy": "© 2021–2026 English Tutor Ksenia"
+    "footer_copy": "© 2021–2026 English Tutor Ksenia",
+    "pkg_btn": "Купити пакет"
   }
 };
 

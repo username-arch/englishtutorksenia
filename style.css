@@ -160,6 +160,60 @@ details[open] .plus {
   -webkit-overflow-scrolling: touch;
 }
 
+
+/* Lesson Cards & Hover Effects */
+.lesson-card {
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lesson-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(36, 70, 216, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
+    border-color: var(--color-primary) !important;
+  }
+}
+
+/* Outline Buttons (Book this lesson & Buy package) */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-main);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-outline:hover {
+    background-color: #EEF1FC !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+    transform: translateY(-1px);
+  }
+}
+
+.btn-outline:active {
+  transform: scale(0.98);
+}
+
+/* Package Boxes Hover */
+.package-box {
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .package-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(36, 70, 216, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04);
+    border-color: var(--color-primary) !important;
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   nav > div {
