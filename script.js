@@ -34,7 +34,7 @@ if (document.getElementById("cal-inline-booking")) {
   Cal("init", "booking", { origin: "https://app.cal.com" });
   Cal.ns.booking("inline", {
     elementOrSelector: "#cal-inline-booking",
-    calLink: "englishtutorksenia/45-min-lesson",
+    calLink: "englishtutorksenia",
     layout: "month_view"
   });
   Cal.ns.booking("ui", {
@@ -88,6 +88,7 @@ const translations = {
     "lessons_h2": "Choose your lesson",
     "lessons_sub": "Every lesson is one to one on Zoom. Start with the trial and we choose the best path together. Materials, personal notes and homework are included.",
     "card_trial_badge": "Start here",
+    "card_trial_btn": "Book this lesson",
     "card_trial_title": "Trial lesson",
     "card_trial_desc": "Level check, your goals, and a personal study plan.",
     "card_trial_price": "<span>$10</span><span style=\"font-size: 16px; font-weight: 500; color: #555B6B\">45 min</span>",
@@ -192,6 +193,7 @@ const translations = {
     "lessons_h2": "Выберите формат урока",
     "lessons_sub": "Каждый урок проходит 1-на-1 в Zoom. Начните с пробного, и мы вместе подберем лучший путь. Все материалы, конспекты и задания включены.",
     "card_trial_badge": "Начните отсюда",
+    "card_trial_btn": "Выбрать этот урок",
     "card_trial_title": "Пробный урок",
     "card_trial_desc": "Определение уровня, целей и составление индивидуального плана обучения.",
     "card_trial_price": "<span>$10</span><span style=\"font-size: 16px; font-weight: 500; color: #555B6B\">45 мин</span>",
@@ -296,6 +298,7 @@ const translations = {
     "lessons_h2": "Оберіть формат уроку",
     "lessons_sub": "Кожен урок проходить 1-на-1 в Zoom. Почніть із пробного, і ми разом оберемо найкращий шлях. Усі матеріали, конспекти та завдання включені.",
     "card_trial_badge": "Почніть звідси",
+    "card_trial_btn": "Обрати цей урок",
     "card_trial_title": "Пробний урок",
     "card_trial_desc": "Визначення рівня, цілей та складання індивідуального плану навчання.",
     "card_trial_price": "<span>$10</span><span style=\"font-size: 16px; font-weight: 500; color: #555B6B\">45 хв</span>",
